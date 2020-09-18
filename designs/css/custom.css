@@ -1,0 +1,94 @@
+body {
+  min-height: 100vh;
+  font-family: Helvetica Neue, Roboto, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI, Segoe UI Emoji, Segoe UI Symbol,
+    Noto Color Emoji;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #343a40 !important;
+}
+
+p {
+  font-size: 1.04rem;
+}
+
+a {
+  text-decoration: none !important;
+  border-radius: 5px;
+}
+/* -------------------- NAVBAR -------------------- */
+
+.navbar a,
+span {
+  font-size: 1.1rem;
+  padding: 10px;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.navbar a {
+  padding: 22px 24px !important;
+}
+
+.navbar a:hover {
+  background: #4363e2;
+}
+
+/* -------------------- UTILITIES -------------------- */
+
+.lead {
+  font-weight: 2rem;
+  font-size: 1.4rem;
+}
+
+.social-media-icon {
+  width: 25px;
+  height: 25px;
+  margin: 0 5px 0 5px;
+}
+
+/* -------------------- Background colours -------------------- */
+.bg-blue {
+  background-color: #4c6df6;
+}
+
+.bg-green {
+  background-color: rgb(26, 204, 147);
+}
+
+.bg-grey {
+  background-color: #6c757c;
+}
+
+.bg-red {
+  background-color: #fbc109;
+}
+
+.bg-light {
+  background-color: #343a40;
+}
+
+.bg-dark {
+  background-color: #343a40;
+}
+
+/* -------------------- Text colors -------------------- */
+
+.text-green {
+  color: rgb(26, 204, 147);
+}
+
+.text-grey {
+  color: #6c757c;
+}
+
+#main {
+  margin-top: 70px;
+}

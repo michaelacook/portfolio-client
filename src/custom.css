@@ -1,0 +1,188 @@
+html,
+body,
+#root {
+  height: 100% !important;
+  font-family: "Roboto", sans-serif !important;
+}
+
+pre {
+  padding: 20px !important;
+  margin-bottom: 28px !important;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.42) !important;
+}
+
+blockquote,
+dl,
+ol,
+p,
+table,
+ul {
+  font-size: 1.05rem !important;
+  margin: 0 0 1.5rem !important;
+}
+
+section {
+  margin-left: 110px;
+  margin-right: 110px;
+}
+
+p {
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+a {
+  text-decoration: none !important;
+  border-radius: 5px;
+  color: rgb(26, 204, 147);
+}
+
+textarea {
+  resize: none;
+  white-space: pre-wrap;
+}
+/* -------------------- NAVBAR -------------------- */
+.admin-navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.content {
+  flex: 1 0 auto !important;
+}
+
+.custom-container {
+  margin: 0 auto;
+}
+
+.navbar a:not(.navbar-brand, .navbar-admin) {
+  border: 1.2px solid rgb(50, 186, 131);
+}
+
+.navbar a,
+span {
+  font-size: 1.1rem;
+  padding: 24px 0;
+}
+
+.navbar a {
+  padding: 18px 20px !important;
+}
+
+.navbar a:visited {
+  color: white !important;
+}
+
+.active,
+.navbar a:hover {
+  background: rgb(50, 186, 131);
+  color: white;
+}
+
+/* -------------------- MISC -------------------- */
+
+.lead {
+  font-size: 1.2rem !important;
+  color: #60656c;
+}
+
+.social-media-icon {
+  width: 25px;
+  height: 25px;
+  margin: 0 5px 0 5px;
+}
+
+.shadow {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.brand {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* For displaying blog posts and post previews */
+.post-display {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.tag {
+  cursor: pointer;
+}
+
+.portfolio-img {
+  border: solid 4px #fefefe;
+  box-shadow: 0 0 0 1px rgba(10, 10, 10, 0.2);
+  transition: all 0.2s ease-in-out;
+  line-height: 0;
+}
+
+.post-link:hover {
+ background-color: #F6F8FB;
+}
+
+.navbar {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+/* -------------------- Background colours -------------------- */
+.bg-blue, btn-primary {
+  background-color: #4c6df6 !important;
+}
+
+.bg-green, .btn-success {
+  background-color: rgb(26, 204, 147) !important;
+}
+
+.btn-outline-success, .btn-success {
+  border-color: rgb(26, 204, 147) !important;
+}
+
+.bg-grey {
+  background-color: #6c757c;
+}
+
+.bg-yellow {
+  background-color: #fbc109;
+}
+
+.bg-light {
+  background-color: #343a40;
+}
+
+.bg-dark {
+  background-color: #343a40;
+}
+
+/* -------------------- Text colors -------------------- */
+
+.text-green {
+  color: rgb(26, 204, 147);
+}
+
+.text-grey {
+  color: #6c757c;
+}
+
+.text-white {
+  color: white;
+}
+
+#main {
+  margin-top: 70px;
+}
+
+/* -------------------- Media queries ------------------ */
+@media only screen and (max-width: 786px) {
+  .custom-container {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 787px) {
+  .custom-container {
+    width: 85%;
+  }
+}
