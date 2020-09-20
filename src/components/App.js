@@ -5,7 +5,7 @@ import PrivateRoute from "./PrivateRoute"
 import Navbar from "./Navbar"
 import Home from "./Home"
 import About from "./About"
-import AdminNav from "./AdminNav"
+import Admin from "./Admin"
 import Footer from "./Footer"
 import NewPost from "./NewPost"
 import PostView from "./PostView"
@@ -84,6 +84,9 @@ export default function App() {
           <Route exact path="/signin" component={SignIn} />
           <PrivateRoute exact path="/signout">
             <SignOut signOut={signOut} />
+          </PrivateRoute>
+          <PrivateRoute exact path="/admin">
+            <Admin />
           </PrivateRoute>
         </Switch>
         <Route path="*" component={Footer} />

@@ -25,6 +25,9 @@ export default function Navbar({ user }) {
               <NavLink to="/blog" className="text-light mr-2">
                 Blog
               </NavLink>
+              <NavLink to="/admin" className="text-light">
+                Admin
+              </NavLink>
             </span>
           ) : (
             <span>
@@ -38,7 +41,6 @@ export default function Navbar({ user }) {
           )}
         </div>
       </nav>
-      <div>{user ? <AdminNav /> : null}</div>
     </div>
   )
 }
