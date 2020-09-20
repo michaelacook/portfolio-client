@@ -1,6 +1,7 @@
 // interact with the API
+import apiURL from "./api_url"
 
-module.exports = class Service {
+export default class Service {
   /**
    * Base HTTP request method
    * @param {String} url - API endpoint
@@ -50,7 +51,7 @@ module.exports = class Service {
    */
   static async authenticate(emailAddress, password) {
     const response = await Service.request(
-      `http://localhost:5000/user`,
+      `${apiURL}/user`,
       "GET",
       null,
       { emailAddress, password }
@@ -71,7 +72,7 @@ module.exports = class Service {
    * Get all projects from the server
    */
   static async getProjects() {
-    const response = await Service.request("http://localhost:5000/projects")
+    const response = await Service.request(`${apiURL}/projects`)
     if (response.status === 200) {
       return response.json().then((data) => data)
     } else if (response.status === 400) {
@@ -86,7 +87,7 @@ module.exports = class Service {
    */
   static async getOneProject(id) {
     const response = await Service.request(
-      `http://localhost:5000/projects/${id}`
+      `${apiURL}/projects/${id}`
     )
     if (response.status === 200) {
       return response.json().then((data) => data)
@@ -102,7 +103,7 @@ module.exports = class Service {
    */
   static async deleteProject(id, email, password) {
     const response = await Service.request(
-      `http://localhost:5000/projects/${id}/delete`,
+      `${apiURL}/projects/${id}/delete`,
       "DELETE",
       null,
       { email, password }
@@ -124,7 +125,7 @@ module.exports = class Service {
    */
   static async addProject(payload, emailAddress, password) {
     const response = await Service.request(
-      `http://localhost:5000/projects/add`,
+      `${apiURL}projects/add`,
       "POST",
       payload,
       { emailAddress, password }
@@ -157,7 +158,7 @@ module.exports = class Service {
           "Authorization": `Basic ${encodedCredentials}`,
         }
       }
-      const response = await fetch(`http://localhost:5000/projects/upload`, {
+      const response = await fetch(`${apiURL}/projects/upload`, {
         method: "POST",
         body: payload,
         options
@@ -176,7 +177,7 @@ module.exports = class Service {
    */
   static async addPost(payload, emailAddress, password) {
     const response = await Service.request(
-      `http://localhost:5000/posts/add`,
+      `${apiURL}/posts/add`,
       "POST",
       payload,
       { emailAddress, password }
@@ -198,7 +199,7 @@ module.exports = class Service {
    * @param {Number} id - PK for post
    */
   static async getOnePost(id) {
-    const response = await Service.request(`http://localhost:5000/posts/${id}`)
+    const response = await Service.request(`${apiURL}/posts/${id}`)
     if (response.status === 200) {
       const post = await response.json()
       return post
@@ -213,7 +214,7 @@ module.exports = class Service {
    * Get an array of all posts
    */
   static async getAllPosts() {
-    const response = await Service.request("http://localhost:5000/posts")
+    const response = await Service.request(`${apiURL}/posts`)
     if (response.status === 200) {
       const posts = await response.json()
       return posts
@@ -229,7 +230,7 @@ module.exports = class Service {
    * @param {String} keyword - passed by user
    */
   static async searchPosts(keyword) {
-    const response = await Service.request(`http://localhost:5000/posts/search/${keyword}`)
+    const response = await Service.request(`${apiURL}/posts/search/${keyword}`)
     if (response.status === 200) {
       const posts = await response.json()
       return posts

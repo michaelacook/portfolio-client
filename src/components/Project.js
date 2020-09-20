@@ -36,8 +36,6 @@ export default function Project() {
       <img className="img-fluid mt-3 mb-2 shadow" src={project.img_url} />
       <h4>Description</h4>
       <Post input={project.description} />
-        
-      
     </Content>
   )
 }
