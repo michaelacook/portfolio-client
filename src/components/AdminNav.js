@@ -6,10 +6,16 @@ export default function AdminNav() {
     <div className="alert alert-secondary shadow">
       <div className="container d-flex justify-content-between pl-5 pr-5">
         <span>
-          <Link to="/projects/new" className="btn btn-outline-primary mr-2 pt-4 pb-4">
+          <Link
+            to="/projects/new"
+            className="btn btn-outline-primary mr-2 pt-4 pb-4"
+          >
             New Project
           </Link>
-          <Link to="/posts/new" className="btn btn-outline-primary mr-2 pt-4 pb-4">
+          <Link
+            to="/posts/new"
+            className="btn btn-outline-primary mr-2 pt-4 pb-4"
+          >
             New Post
           </Link>
         </span>

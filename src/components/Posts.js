@@ -68,9 +68,18 @@ export default function Posts() {
         <p className="lead">Notes, tutorials, opinions and more!</p>
         <div className="col-3-lg col-4-md">
           <div className="input-group">
-            <input onChange={(e) => setKeyword(e.target.value)} className="form-control" placeholder="Search..." />
+            <input
+              onChange={(e) => setKeyword(e.target.value)}
+              className="form-control"
+              placeholder="Search..."
+            />
             <div className="input-group-append">
-              <button onClick={(e) => search(e)} className="btn bg-blue text-white">Go</button>
+              <button
+                onClick={(e) => search(e)}
+                className="btn bg-blue text-white"
+              >
+                Go
+              </button>
             </div>
           </div>
         </div>

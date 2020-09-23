@@ -39,25 +39,30 @@ export default function NewProject(props) {
   async function publishProject(e) {
     e.preventDefault()
     const { email, password } = user
-    service.addProject({
-      title, 
-      description,
-      repo_url,
-      live_link,
-      technologies,
-      imgFileName
-    }, email, password)
+    service
+      .addProject(
+        {
+          title,
+          description,
+          repo_url,
+          live_link,
+          technologies,
+          imgFileName,
+        },
+        email,
+        password
+      )
       .then(() => {
         history.push("/")
       })
-      .catch(error => {
+      .catch((error) => {
         setErrors(error.message)
         console.log(error)
         console.log(error.message)
         console.log(error.stack)
       })
     const formData = new FormData()
-    formData.append('img', img)
+    formData.append("img", img)
     await service.uploadImage(formData, email, password)
   }
 
@@ -129,10 +134,23 @@ export default function NewProject(props) {
               </div>
 
               <div className="col-7-lg col-10-md col-sm mb-4">
-                <input onChange={(e) => setRepo_url(e.target.value)} className="form-control mb-3" placeholder="Repo link" />
-                <input onChange={(e) => setLive_link(e.target.value)} className="form-control" placeholder="Live link" />
+                <input
+                  onChange={(e) => setRepo_url(e.target.value)}
+                  className="form-control mb-3"
+                  placeholder="Repo link"
+                />
+                <input
+                  onChange={(e) => setLive_link(e.target.value)}
+                  className="form-control"
+                  placeholder="Live link"
+                />
                 <div className="custom-file">
-                  <input onChange={(e) => setFile(e)} type="file" class="custom-file-input" id="picUpload" />
+                  <input
+                    onChange={(e) => setFile(e)}
+                    type="file"
+                    class="custom-file-input"
+                    id="picUpload"
+                  />
                   <label for="picUpload" className="custom-file-label">
                     Choose a picture
                   </label>
@@ -158,7 +176,10 @@ export default function NewProject(props) {
               >
                 Preview
               </button>
-              <button onClick={publishProject} className="btn btn-lg bg-blue text-light mr-2">
+              <button
+                onClick={publishProject}
+                className="btn btn-lg bg-blue text-light mr-2"
+              >
                 Publish
               </button>
               <button

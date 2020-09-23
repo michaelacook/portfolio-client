@@ -13,20 +13,19 @@ export default class Service {
    * @return {String} JSON stringified object
    */
   static request(
-    url, 
-    method = "GET", 
-    body = null, 
+    url,
+    method = "GET",
+    body = null,
     credentials = null,
-    headers = {"Content-Type": "application/json; charset=utf-8"}
-    ) {
-
+    headers = { "Content-Type": "application/json; charset=utf-8" }
+  ) {
     const options = {
       method,
-      headers: {}
+      headers: {},
     }
 
     if (headers != null) {
-      options['headers'] = headers      
+      options["headers"] = headers
     }
 
     if (body) {
@@ -50,12 +49,10 @@ export default class Service {
    * @return {Promise} error on response status 401
    */
   static async authenticate(emailAddress, password) {
-    const response = await Service.request(
-      `${apiURL}/user`,
-      "GET",
-      null,
-      { emailAddress, password }
-    )
+    const response = await Service.request(`${apiURL}/user`, "GET", null, {
+      emailAddress,
+      password,
+    })
     if (response.status === 200) {
       const user = await response.json().then((data) => data)
       return user
@@ -86,9 +83,7 @@ export default class Service {
    * Get a single project from the server
    */
   static async getOneProject(id) {
-    const response = await Service.request(
-      `${apiURL}/projects/${id}`
-    )
+    const response = await Service.request(`${apiURL}/projects/${id}`)
     if (response.status === 200) {
       return response.json().then((data) => data)
     } else if (response.status === 400) {
@@ -101,12 +96,12 @@ export default class Service {
   /**
    * Delete a project
    */
-  static async deleteProject(id, email, password) {
+  static async deleteProject(id, emailAddress, password) {
     const response = await Service.request(
       `${apiURL}/projects/${id}/delete`,
       "DELETE",
       null,
-      { email, password }
+      { emailAddress, password }
     )
     if (response.status === 204) {
       return Promise.resolve(true)
@@ -149,19 +144,17 @@ export default class Service {
    */
   static async uploadImage(payload, email, password) {
     try {
-      const encodedCredentials = btoa(
-        `${email}:${password}`
-      )
+      const encodedCredentials = btoa(`${email}:${password}`)
 
       const options = {
         headers: {
-          "Authorization": `Basic ${encodedCredentials}`,
-        }
+          Authorization: `Basic ${encodedCredentials}`,
+        },
       }
       const response = await fetch(`${apiURL}/projects/upload`, {
         method: "POST",
         body: payload,
-        options
+        options,
       })
       return true
     } catch (error) {

@@ -8,13 +8,13 @@ export default function Navbar({ user }) {
       <nav class="navbar bg-green shadow">
         <div class="container d-flex justify-content-between">
           <NavLink
-            style={{ fontSize:18 }}
+            style={{ fontSize: 18 }}
             exact
             to="/"
             className="navbar-brand text-light font-weight-bold"
             href="index.html"
           >
-          {/* 💾  */}
+            {/* 💾  */}
             Michael Cook
           </NavLink>
           {user ? (

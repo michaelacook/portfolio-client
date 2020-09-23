@@ -121,7 +121,7 @@ span {
 }
 
 .post-link:hover {
- background-color: #F6F8FB;
+  background-color: #f6f8fb;
 }
 
 .navbar {
@@ -129,15 +129,18 @@ span {
   padding-bottom: 0 !important;
 }
 /* -------------------- Background colours -------------------- */
-.bg-blue, btn-primary {
+.bg-blue,
+btn-primary {
   background-color: #4c6df6 !important;
 }
 
-.bg-green, .btn-success {
+.bg-green,
+.btn-success {
   background-color: rgb(26, 204, 147) !important;
 }
 
-.btn-outline-success, .btn-success {
+.btn-outline-success,
+.btn-success {
   border-color: rgb(26, 204, 147) !important;
 }
 
