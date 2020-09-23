@@ -125,7 +125,7 @@ export default class Service {
    */
   static async addProject(payload, emailAddress, password) {
     const response = await Service.request(
-      `${apiURL}projects/add`,
+      `${apiURL}/projects/add`,
       "POST",
       payload,
       { emailAddress, password }
