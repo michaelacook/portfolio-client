@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import Post from "./Post"
 import Content from "./Content"
 import Context from "./Provider"
@@ -11,7 +11,8 @@ export default function ViewPost() {
   const [tags, setTags] = useState("")
   const [date, setDate] = useState("")
   const [errors, setErrors] = useState("")
-  const { service } = useContext(Context)
+  const { service, user } = useContext(Context)
+  const history = useHistory()
   const { id } = useParams()
 
   useEffect(() => {
@@ -28,6 +29,19 @@ export default function ViewPost() {
       })
   }, [])
 
+  function deletePost() {
+    if (window.confirm("Are you sure you want to delete this post?")) {
+      const { email, password } = user
+      service.deletePost(id, email, password)
+        .then(() => {
+          history.push("/admin")
+        })
+        .catch((error) => {
+          setErrors(error.message)
+        })
+    }
+  }
+
   return (
     <Content>
       <h1 className="mb-5">{title}</h1>
@@ -36,6 +50,7 @@ export default function ViewPost() {
       <article className="mt-3">
         <Post input={body} />
       </article>
+      {user ? <button onClick={deletePost} className="btn btn-block btn-danger">Delete Post</button> : null}
     </Content>
   )
 }

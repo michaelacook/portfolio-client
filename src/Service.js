@@ -219,6 +219,31 @@ export default class Service {
   }
 
   /**
+   * Send request to delete a post
+   * @param {Number} id - post  PK
+   * @param {String} emailAddress
+   * @param {String} password
+   */
+  static async deletePost(id, emailAddress, password) {
+    const response = await Service.request(
+      `${apiURL}/posts/${id}/delete`,
+      "DELETE",
+      null,
+      { emailAddress, password }
+    )
+    if (response.status === 204) {
+      return true
+    } else if (response.status === 400) {
+      return new Error("Bad Request")
+    } else if (response.status === 401) {
+      return new Error("Not Authorized.")
+    } else if (response.status === 500) {
+      const error = await response.json()
+      throw new Error("Server Error")
+    }
+  }
+
+  /**
    * Search posts by title
    * @param {String} keyword - passed by user
    */
