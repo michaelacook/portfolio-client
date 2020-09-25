@@ -25,8 +25,11 @@ export default function Navbar({ user }) {
               <NavLink to="/blog" className="text-light mr-2">
                 Blog
               </NavLink>
-              <NavLink to="/admin" className="text-light">
+              <NavLink to="/admin" className="text-light mr-2">
                 Admin
+              </NavLink>
+              <NavLink to="/signout" className="text-light mr">
+                Sign Out
               </NavLink>
             </span>
           ) : (
