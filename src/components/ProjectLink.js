@@ -3,10 +3,10 @@ import { Link } from "react-router-dom"
 
 export default function ProjectLink({ id, title, img_url }) {
   return (
-    <span>
+    <span className="text-wrap">
       <Link to={`/projects/${id}`}>
         <img
-          style={{ width: 300 }}
+          style={{ width: 350 }}
           src={img_url}
           className="portfolio-img rounded"
         />

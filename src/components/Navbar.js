@@ -14,11 +14,10 @@ export default function Navbar({ user }) {
             className="navbar-brand text-light font-weight-bold"
             href="index.html"
           >
-            {/* 💾  */}
             Michael Cook
           </NavLink>
           {user ? (
-            <span>
+            <span className="">
               <NavLink to="/about" className="text-light mr-2">
                 About
               </NavLink>

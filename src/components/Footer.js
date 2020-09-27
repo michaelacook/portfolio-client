@@ -11,7 +11,7 @@ export default function Footer() {
               src="https://img.icons8.com/small/16/000000/github.png"
             />
           </a>
-          <a>
+          <a href="https://www.linkedin.com/in/michael-cook-47151118a/">
             <img
               class="mr-2"
               src="https://img.icons8.com/small/16/000000/linkedin.png"

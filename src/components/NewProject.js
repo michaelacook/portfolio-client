@@ -20,6 +20,7 @@ export default function NewProject(props) {
 
   useEffect(() => {
     bsCustomFileInput.init()
+    console.log(user)
   }, [])
 
   /**
