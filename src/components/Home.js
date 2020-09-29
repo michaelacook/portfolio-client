@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom"
 import Content from "./Content"
 import Context from "./Provider"
 import ProjectLink from "./ProjectLink"
-// import projectsArray from "../projects.json"
 
 export default function Home() {
   const [projects, setProjects] = useState([])
@@ -19,7 +18,6 @@ export default function Home() {
       .catch((error) => {
         setErrors(error.message)
       })
-    // setProjects(projectsArray.projects)
   }, [])
 
   return (

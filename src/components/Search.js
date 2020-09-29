@@ -16,6 +16,7 @@ export default function Search() {
         setPosts(posts)
       })
       .catch((error) => {
+        console.log(error)
         setErrors(error.message)
       })
   }, [])

@@ -6,7 +6,7 @@ export default function ProjectLink({ id, title, img_url }) {
     <span className="text-wrap">
       <Link to={`/projects/${id}`}>
         <img
-          style={{ width: 350 }}
+          style={{ width: 325 }}
           src={img_url}
           className="portfolio-img rounded"
         />

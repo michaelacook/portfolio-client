@@ -9,6 +9,7 @@ export default function About() {
     <Content>
       <h1 className="text-center mb-5">About Me</h1>
       <div className="p-0 custom-container">
+        {/* <img src="/images/.jpg" className="img-fluid mx-auto d-block" /> */}
         <ReactMarkdown source={input} renderers={{ code: CodeBlock }} />
       </div>
     </Content>
