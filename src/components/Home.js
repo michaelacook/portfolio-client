@@ -30,13 +30,19 @@ export default function Home() {
       </p>
       <hr />
       <div className="d-flex justify-content-between flex-wrap mt-5">
-        {projects.map((project) => (
-          <ProjectLink
-            title={project.title}
-            id={project.id}
-            img_url={project.img_url}
-          />
-        ))}
+        {!projects.length ? (
+          <div class="spinner-border text-success" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        ) : (
+          projects.map((project) => (
+            <ProjectLink
+              title={project.title}
+              id={project.id}
+              img_url={project.img_url}
+            />
+          ))
+        )}
       </div>
       <hr />
       <p className="text-center">

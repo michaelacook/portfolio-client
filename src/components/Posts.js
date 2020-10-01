@@ -87,21 +87,27 @@ export default function Posts() {
 
       <hr />
       <div className="col mb-5 mt-5 pl-0">
-        {posts.map((post) => {
-          return (
-            <div className="mt-3 p-2 rounded-lg post-link" key={post.id}>
-              <small className="text-muted">
-                {new Date(post.createdAt).toDateString()}
-              </small>
-              <Link to={`/posts/${post.id}`}>
-                <h5 className="mt-2 mb-2">{post.title}</h5>
-              </Link>
-              <small className="text-secondary">
-                {post.body.substring(0, 75)} ...
-              </small>
-            </div>
-          )
-        })}
+        {!posts.length ? (
+          <div class="spinner-border text-success" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        ) : (
+          posts.map((post) => {
+            return (
+              <div className="mt-3 p-2 rounded-lg post-link" key={post.id}>
+                <small className="text-muted">
+                  {new Date(post.createdAt).toDateString()}
+                </small>
+                <Link to={`/posts/${post.id}`}>
+                  <h5 className="mt-2 mb-2">{post.title}</h5>
+                </Link>
+                <small className="text-secondary">
+                  {post.body.substring(0, 75)} ...
+                </small>
+              </div>
+            )
+          })
+        )}
         {paginatedPosts ? displayPaginationNav() : null}
       </div>
     </Content>

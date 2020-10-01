@@ -32,7 +32,8 @@ export default function ViewPost() {
   function deletePost() {
     if (window.confirm("Are you sure you want to delete this post?")) {
       const { email, password } = user
-      service.deletePost(id, email, password)
+      service
+        .deletePost(id, email, password)
         .then(() => {
           history.push("/admin")
         })
@@ -50,7 +51,11 @@ export default function ViewPost() {
       <article className="mt-3">
         <Post input={body} />
       </article>
-      {user ? <button onClick={deletePost} className="btn btn-block btn-danger">Delete Post</button> : null}
+      {user ? (
+        <button onClick={deletePost} className="btn btn-block btn-danger">
+          Delete Post
+        </button>
+      ) : null}
     </Content>
   )
 }
