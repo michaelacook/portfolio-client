@@ -20,12 +20,12 @@ export default function Project() {
   return (
     <Content>
       <div className="d-flex justify-content-between">
-        {!project ? (
-          <div class="spinner-border text-success" role="status">
-            <span class="sr-only">Loading...</span>
-          </div>
-        ) : null}
         <div>
+          {!project ? (
+            <div class="spinner-border text-success" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          ) : null}
           <h1>{project.title}</h1>
           <h5>Technologies:</h5>
           <Tags tags={project.technologies} />
