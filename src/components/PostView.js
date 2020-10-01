@@ -45,6 +45,11 @@ export default function ViewPost() {
 
   return (
     <Content>
+      {!(title && body && tags && date) ? (
+        <div class="spinner-border text-success" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      ) : null}
       <h1 className="mb-5">{title}</h1>
       <small className="text-muted">&#x1F550; Published {date}</small>
       <Tags tags={tags} />
