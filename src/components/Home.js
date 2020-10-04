@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react"
-import { useHistory } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 import Content from "./Content"
 import Context from "./Provider"
 import ProjectLink from "./ProjectLink"
@@ -7,7 +7,7 @@ import ProjectLink from "./ProjectLink"
 export default function Home() {
   const [projects, setProjects] = useState([])
   const [errors, setErrors] = useState("")
-  const { service } = useContext(Context)
+  const { service, user } = useContext(Context)
 
   useEffect(() => {
     service
@@ -43,6 +43,11 @@ export default function Home() {
             />
           ))
         )}
+        {user ? (
+          <Link className="btn btn-lg btn-block btn-success" to="/projects/new">
+            New Project
+          </Link>
+        ) : null}
       </div>
       <hr />
       <p className="text-center">
