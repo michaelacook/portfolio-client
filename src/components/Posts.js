@@ -9,8 +9,17 @@ export default function Posts() {
   const [paginatedPosts, setPaginatedPosts] = useState([])
   const [page, setPage] = useState(0)
   const [errors, setErrors] = useState("")
-  const { service } = useContext(Context)
+  const { service, user } = useContext(Context)
   const history = useHistory()
+
+  function deletePost(id) {
+    if (window.confirm("Are you sure you want to delete this post?")) {
+      const { email, password } = user
+      service.deletePost(id, email, password).then(() => {
+        setPosts(posts.filter((post) => post.id !== id))
+      })
+    }
+  }
 
   useEffect(() => {
     service
@@ -104,6 +113,19 @@ export default function Posts() {
                 <small className="text-secondary">
                   {post.body.substring(0, 75)} ...
                 </small>
+                {user ? (
+                  <span className="d-block">
+                    <button className="btn btn-sm btn-success mr-2">
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => deletePost(post.id)}
+                      className="btn btn-sm btn-danger"
+                    >
+                      Delete
+                    </button>
+                  </span>
+                ) : null}
               </div>
             )
           })
