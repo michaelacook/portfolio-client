@@ -42,11 +42,6 @@ textarea {
   white-space: pre-wrap;
 }
 /* -------------------- NAVBAR -------------------- */
-.admin-navbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
 
 .content {
   flex: 1 0 auto !important;
@@ -67,7 +62,7 @@ span {
 }
 
 .navbar a {
-  padding: 18px 20px !important;
+  padding: 12px 14px !important;
 }
 
 .navbar a:visited {
@@ -78,7 +73,7 @@ span {
 .navbar a:hover {
   background: rgb(50, 186, 131);
   color: white;
-}
+} 
 
 /* -------------------- MISC -------------------- */
 
@@ -124,10 +119,10 @@ span {
   background-color: #f6f8fb;
 }
 
-.navbar {
+/* .navbar {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
-}
+} */
 /* -------------------- Background colours -------------------- */
 .bg-blue,
 btn-primary {
