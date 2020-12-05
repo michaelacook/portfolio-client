@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import "./main.css"
-import "./custom.css"
+import "semantic-ui-css/semantic.min.css"
+// import "./custom.css"
 import App from "./components/App"
 import * as serviceWorker from "./serviceWorker"
 
