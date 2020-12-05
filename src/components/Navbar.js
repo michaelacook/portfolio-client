@@ -5,7 +5,7 @@ import AdminNav from "./AdminNav"
 
 export default function Navbar({ user }) {
   return (
-    <Segment inverted>
+    <Segment inverted style={{ borderRadius: "0" }}>
       <Menu inverted pointing secondary>
         <Container>
           <Menu.Item header as={NavLink} to="/" exact>
