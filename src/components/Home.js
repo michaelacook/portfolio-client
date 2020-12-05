@@ -2,7 +2,15 @@ import React, { useState, useContext, useEffect } from "react"
 import { useHistory, Link } from "react-router-dom"
 import Content from "./Content"
 import Context from "./Provider"
-import { Dimmer, Loader } from "semantic-ui-react"
+import {
+  Button,
+  Container,
+  Dimmer,
+  Divider,
+  Grid,
+  Header,
+  Loader,
+} from "semantic-ui-react"
 import ProjectLink from "./ProjectLink"
 
 export default function Home() {
@@ -32,22 +40,32 @@ export default function Home() {
           <Loader>Loading...</Loader>
         </Dimmer>
       ) : (
-        <Content>
-          <h2>Hey, I'm Michael🖖</h2>
+        <Container>
+          <Header as="h2" style={{ marginTop: "22px" }}>
+            Hey, I'm Michael🖖
+          </Header>
           <p className="lead">
-            I'm a web developer and JavaScript enthusiast seeking my first
-            professional opportunity. This site is where I share the projects
-            I'm most proud of, and write about technology.
+            I'm a software developer and JavaScript enthusiast. My favourite
+            technologies are Node, Express, PostgreSQL, and React but I also
+            dabble in PHP. This site is where I share the projects I'm most
+            proud of and write about technology.
           </p>
-          <hr />
-          <div className="d-flex justify-content-between flex-wrap mt-5">
+          <Divider />
+          <Grid fluid stackable centered style={{ marginTop: "22px" }}>
             {projects.map((project) => (
-              <ProjectLink
-                title={project.title}
-                id={project.id}
-                img_url={project.img_url}
-              />
+              <Grid.Column width={5}>
+                <ProjectLink
+                  title={project.title}
+                  description={project.description}
+                  repoUrl={project.repo_url}
+                  liveLink={project.live_link}
+                  id={project.id}
+                  img_url={project.img_url}
+                />
+              </Grid.Column>
             ))}
+          </Grid>
+          <div className="d-flex justify-content-between flex-wrap mt-5">
             {user ? (
               <Link
                 className="btn btn-lg btn-block btn-success"
@@ -65,7 +83,7 @@ export default function Home() {
               Have a look at the <a href="#">repo</a>.
             </small>
           </p>
-        </Content>
+        </Container>
       )}
     </React.Fragment>
   )

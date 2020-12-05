@@ -1,8 +1,17 @@
 import React, { useContext } from "react"
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
+import ReactMarkdown from "react-markdown"
+import { Button, Card, Icon, Image } from "semantic-ui-react"
 import Context from "./Provider"
 
-export default function ProjectLink({ id, title, img_url }) {
+export default function ProjectLink({
+  id,
+  title,
+  img_url,
+  repoUrl,
+  liveLink,
+  description,
+}) {
   const { user, service } = useContext(Context)
   const history = useHistory()
 
@@ -19,30 +28,31 @@ export default function ProjectLink({ id, title, img_url }) {
   }
 
   return (
-    <span>
-      <span className="text-wrap">
-        <Link to={`/projects/${id}`}>
-          <img
-            style={{ width: 300 }}
-            src={img_url}
-            className="portfolio-img rounded"
-          />
-          <h5 className="text-center">{title.toUpperCase()}</h5>
-        </Link>
-        <span className="d-block d-flex justify-content-center p-0">
+    <React.Fragment>
+      <Card raised fluid>
+        <Image src={img_url} />
+        <Card.Content>
+          <Card.Header textAlign="center">{title}</Card.Header>
+          <Card.Description>
+            <ReactMarkdown source={description} />
+          </Card.Description>
+        </Card.Content>
+        <Card.Content extra textAlign="center">
+          <Button as="a" href={liveLink} target="_blank" compact>
+            Live Demo
+          </Button>
+          <Button as="a" href={repoUrl} target="_blank" compact>
+            <Icon name="github" />
+            Repo
+          </Button>
           {user ? (
-            <span>
-              <button className="btn btn-sm btn-success mr-2">Edit</button>
-              <button
-                onClick={() => deleteProject()}
-                className="btn btn-sm btn-danger"
-              >
-                Delete
-              </button>
-            </span>
+            <Button compact color="red" onClick={() => deleteProject()}>
+              <Icon name="warning circle" />
+              Delete
+            </Button>
           ) : null}
-        </span>
-      </span>
-    </span>
+        </Card.Content>
+      </Card>
+    </React.Fragment>
   )
 }
