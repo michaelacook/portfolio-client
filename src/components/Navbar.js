@@ -1,7 +1,6 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
 import { Button, Container, Segment, Menu } from "semantic-ui-react"
-import AdminNav from "./AdminNav"
 
 export default function Navbar({ user }) {
   return (
