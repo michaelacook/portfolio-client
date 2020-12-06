@@ -69,7 +69,7 @@ export default function Home() {
             style={{ marginTop: "22px" }}
           >
             {projects.map((project) => (
-              <Grid.Column width={5}>
+              <Grid.Column tablet={8} computer={5}>
                 <ProjectLink
                   title={project.title}
                   description={project.description}
