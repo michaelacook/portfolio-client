@@ -60,7 +60,14 @@ export default function Home() {
             proud of and write about technology.
           </p>
           <Divider />
-          <Grid fluid stackable centered style={{ marginTop: "22px" }}>
+          <Grid
+            stretched
+            relaxed
+            fluid
+            stackable
+            centered
+            style={{ marginTop: "22px" }}
+          >
             {projects.map((project) => (
               <Grid.Column width={5}>
                 <ProjectLink
