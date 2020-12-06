@@ -42,7 +42,11 @@ export default function Home() {
     <React.Fragment>
       {loading ? (
         <Dimmer active>
-          <Loader>{slow ? "Whoops, the server's a bit slow right now..." : "Loading..."}</Loader>
+          <Loader>
+            {slow
+              ? "Whoops, the server's a bit slow right now..."
+              : "Loading..."}
+          </Loader>
         </Dimmer>
       ) : (
         <Container>
