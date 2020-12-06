@@ -15,6 +15,7 @@ import ProjectLink from "./ProjectLink"
 
 export default function Home() {
   const [loading, setLoading] = useState(true)
+  const [slow, setSlow] = useState(false)
   const [projects, setProjects] = useState([])
   const [errors, setErrors] = useState("")
   const { service, user } = useContext(Context)
@@ -33,11 +34,15 @@ export default function Home() {
       })
   }, [])
 
+  setTimeout(() => {
+    setSlow(true)
+  }, 6000)
+
   return (
     <React.Fragment>
       {loading ? (
         <Dimmer active>
-          <Loader>Loading...</Loader>
+          <Loader>{slow ? "Whoops, the server's a bit slow right now..." : "Loading..."}</Loader>
         </Dimmer>
       ) : (
         <Container>
