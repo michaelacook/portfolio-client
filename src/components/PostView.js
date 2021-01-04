@@ -29,6 +29,8 @@ export default function ViewPost() {
       })
   }, [])
 
+  console.log(tags)
+
   function deletePost() {
     if (window.confirm("Are you sure you want to delete this post?")) {
       const { email, password } = user
@@ -52,7 +54,7 @@ export default function ViewPost() {
       ) : null}
       <h1 className="mb-5">{title}</h1>
       <small className="text-muted">&#x1F550; Published {date}</small>
-      <Tags tags={tags} />
+      {tags.length ? <Tags tags={tags} /> : null}
       <article className="mt-3">
         <Post input={body} />
       </article>

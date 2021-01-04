@@ -1,4 +1,5 @@
 import React from "react"
+import { Button } from "semantic-ui-react"
 
 /**
  * Map over array of tags and return styled elements
@@ -6,21 +7,13 @@ import React from "react"
  * @param {Array} destructure tags array from props
  */
 export default function Tags({ tags }) {
-  function createTagElements() {
-    if (tags) {
-      const tagElements = tags.map((tag, i) => {
-        return (
-          <div
-            className="tag badge bg-green text-white mr-2 mb-3 p-2"
-            key={i}
-            data-index={i}
-          >
-            {tag}
-          </div>
-        )
-      })
-      return tagElements
-    }
-  }
-  return <div className="mt-3">{createTagElements()}</div>
+  return (
+    <div style={{ marginTop: "15px", marginBottom: "15px" }}>
+      {tags.map((tag) => (
+        <Button size="tiny" compact>
+          {tag}
+        </Button>
+      ))}
+    </div>
+  )
 }

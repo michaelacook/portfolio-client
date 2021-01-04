@@ -10,6 +10,7 @@ import {
   Segment,
 } from "semantic-ui-react"
 import Context from "./Provider"
+import PostLink from "./PostLink"
 
 export default () => {
   const [posts, setPosts] = useState([])
@@ -124,24 +125,17 @@ export default () => {
           </div>
 
           <Divider />
-          {posts.map((post) => {
-            return (
-              <Segment stacked raised key={post.id}>
-                <small style={{ color: "#6E7B8E" }}>
-                  {new Date(post.createdAt).toDateString()}
-                </small>
-                <Link to={`/posts/${post.id}`}>
-                  <Header as="h5" style={{ margin: "7px 0 7px 0" }}>
-                    {post.title}
-                  </Header>
-                </Link>
-                <small style={{ color: "#73757D" }}>
-                  {post.body.substring(0, 75)} ...
-                </small>
-              </Segment>
-            )
-          })}
-          {paginatedPosts ? displayPaginationNav() : null}
+          <Grid stretched relaxed fluid stackable style={{ marginTop: "22px" }}>
+            {posts.map((post) => {
+              console.log(post)
+              return (
+                <Grid.Column tablet={8} computer={5} key={post.id}>
+                  <PostLink post={post} />
+                </Grid.Column>
+              )
+            })}
+            {paginatedPosts ? displayPaginationNav() : null}
+          </Grid>
         </Container>
       )}
     </React.Fragment>
