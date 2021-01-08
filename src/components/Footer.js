@@ -5,8 +5,8 @@ export default function Footer() {
   return (
     <Container style={{ marginTop: "50px", marginBottom: "25px" }}>
       <Divider />
-      <p className="text-center">
-        <small className="text-secondary">
+      <p style={{ display: "flex", justifyContent: "center" }}>
+        <small style={{ color: "#49494A" }}>
           This site was built as a Single Page Application using React.js and
           the Express framework. Like what I've done? Have a look at the{" "}
           <a
