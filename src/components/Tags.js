@@ -10,7 +10,7 @@ export default function Tags({ tags }) {
   return (
     <div style={{ marginTop: "15px", marginBottom: "15px" }}>
       {tags.map((tag) => (
-        <Button size="tiny" compact>
+        <Button style={{ margin: "1.7px" }} size="tiny" compact>
           {tag}
         </Button>
       ))}

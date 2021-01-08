@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useContext, useRef, Fragment } from "react"
 import { useHistory } from "react-router-dom"
-import Content from "./Content"
+import { Button, Container, Header, Icon } from "semantic-ui-react"
 import Form from "./Form"
-import Footer from "./Footer"
 import Context from "./Provider"
 import MarkDownCheatSheet from "./MarkDownCheatSheet"
 
@@ -130,12 +129,14 @@ export default function NewPost(props) {
   }
 
   return (
-    <Content>
+    <Container>
       <Form
         submit={publishPost}
         elements={() => (
           <Fragment>
-            <h3>New Post</h3>
+            <Header style={{ marginTop: "30px" }} as="h3">
+              New Post
+            </Header>
             <div class="col p-0">
               <input
                 type="text"
@@ -165,29 +166,20 @@ export default function NewPost(props) {
                 />
               </div>
               <div>
-                <button
-                  class="btn btn-lg bg-green text-light mr-2"
-                  onClick={(e) => sendStateToPreview(e)}
-                >
-                  Preview
-                </button>
-                <button
-                  type="submit"
-                  className="btn btn-lg bg-blue text-light mr-2"
-                >
+                <Button onClick={(e) => sendStateToPreview(e)}>Preview</Button>
+                <Button type="submit" color="green">
+                  <Icon name="thumbs up" />
                   Publish
-                </button>
-                <button
-                  class="btn btn-lg btn-secondary text-light"
-                  onClick={cancel}
-                >
+                </Button>
+                <Button color="red" onClick={cancel}>
+                  <Icon name="minus circle" />
                   Cancel
-                </button>
+                </Button>
               </div>
             </div>
           </Fragment>
         )}
       />
-    </Content>
+    </Container>
   )
 }
