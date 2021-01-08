@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
 import { useParams, useHistory } from "react-router-dom"
+import { Button, Container, Dimmer, Header, Loader } from "semantic-ui-react"
 import Post from "./Post"
-import Content from "./Content"
 import Context from "./Provider"
 import Tags from "./Tags"
 
@@ -12,10 +12,13 @@ export default function ViewPost() {
   const [date, setDate] = useState("")
   const [errors, setErrors] = useState("")
   const { service, user } = useContext(Context)
+  const [loading, setLoading] = useState(false)
+  const [loaderText, setLoaderText] = useState("Loading...")
   const history = useHistory()
   const { id } = useParams()
 
   useEffect(() => {
+    setLoading(true)
     service
       .getOnePost(id)
       .then((data) => {
@@ -24,12 +27,15 @@ export default function ViewPost() {
         setTags(data.tags)
         setDate(new Date(data.createdAt).toDateString())
       })
+      .finally(() => setLoading(false))
       .catch((error) => {
         setErrors(error.message)
       })
   }, [])
 
-  console.log(tags)
+  setTimeout(() => {
+    setLoaderText("Whoopers, looks like the server's a bit slow...")
+  }, 6000)
 
   function deletePost() {
     if (window.confirm("Are you sure you want to delete this post?")) {
@@ -46,23 +52,33 @@ export default function ViewPost() {
   }
 
   return (
-    <Content>
-      {!(title && body && tags && date) ? (
-        <div class="spinner-border text-success" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-      ) : null}
-      <h1 className="mb-5">{title}</h1>
-      <small className="text-muted">&#x1F550; Published {date}</small>
-      {tags.length ? <Tags tags={tags} /> : null}
-      <article className="mt-3">
-        <Post input={body} />
-      </article>
-      {user ? (
-        <button onClick={deletePost} className="btn btn-block btn-danger">
-          Delete Post
-        </button>
-      ) : null}
-    </Content>
+    <Container>
+      {loading ? (
+        <Dimmer active>
+          <Loader>{loaderText}</Loader>
+        </Dimmer>
+      ) : (
+        <React.Fragment>
+          <Header as="h1" style={{ marginTop: "30px", marginBottom: "20px" }}>
+            {title}
+          </Header>
+          <small style={{ color: "#49494A" }}>&#x1F550; Published {date}</small>
+          {tags.length ? <Tags tags={tags} /> : null}
+          <article style={{ marginTop: "23px" }}>
+            <Post input={body} />
+          </article>
+          {user ? (
+            <Button
+              style={{ marginTop: "20px" }}
+              onClick={deletePost}
+              color="red"
+              fluid
+            >
+              Delete Post
+            </Button>
+          ) : null}
+        </React.Fragment>
+      )}
+    </Container>
   )
 }
