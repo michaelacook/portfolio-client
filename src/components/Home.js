@@ -91,14 +91,6 @@ export default function Home() {
               </Link>
             ) : null}
           </div>
-          <hr />
-          <p className="text-center">
-            <small className="text-secondary">
-              This site was built as a Single Page Application using React.js
-              and the Express framework on the server side. Like what I've done?
-              Have a look at the <a href="#">repo</a>.
-            </small>
-          </p>
         </Container>
       )}
     </React.Fragment>
