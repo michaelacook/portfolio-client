@@ -3,7 +3,7 @@ import { Container, Divider } from "semantic-ui-react"
 
 export default function Footer() {
   return (
-    <Container style={{ marginTop: "50px", marginBottom: "25px" }}>
+    <Container style={{ height: "15vh" }}>
       <Divider />
       <p style={{ display: "flex", justifyContent: "center" }}>
         <small style={{ color: "#49494A" }}>

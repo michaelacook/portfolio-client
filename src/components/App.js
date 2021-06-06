@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom"
 import { Provider } from "./Provider"
+import { socket } from "../socket"
 import PrivateRoute from "./PrivateRoute"
 import Navbar from "./Navbar"
 import Home from "./Home"
@@ -16,23 +17,54 @@ import SignIn from "./SignIn"
 import SignOut from "./SignOut"
 import Search from "./Search"
 import Posts from "./Posts"
+import Messages from "./Messages"
+import MessageView from "./MessageView"
+import Contact from "./Contact"
 import Service from "../Service"
 import Cookies from "js-cookie"
 
 export default function App() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(
+    Cookies.get("user") ? JSON.parse(Cookies.get("user")) : null
+  )
+  const [messages, setMessages] = useState([])
   const history = useHistory()
 
   useEffect(() => {
     setUser(JSON.parse(Cookies.get("user") || null))
+
+    async function getMessages() {
+      const messages = await Service.getMessages(user.email, user.password)
+      setMessages(messages)
+    }
+
+    if (user) {
+      getMessages()
+    }
   }, [])
+
+  function receiveMessage(msg) {
+    setMessages([...messages, msg])
+  }
+
+  function getMessages() {
+    Service.getMessages(user.email, user.password).then((messages) => {
+      setMessages(messages)
+    })
+  }
+
+  function addMessageToState(message) {
+    setMessages([...messages, message])
+  }
+
+  socket.on("message", receiveMessage)
 
   /**
    * Call Service.authenticate, get user and persist in session
    * @param {String} emailAddress
    * @param {String} password
    */
-  async function signIn(emailAddress, password) {
+  async function signIn(emailAddress, password, setCookie = false) {
     const response = await Service.authenticate(emailAddress, password)
     const { firstName, lastName, email } = response
     const user = {
@@ -41,10 +73,13 @@ export default function App() {
       email,
       password,
     }
-    Cookies.set("user", JSON.stringify(user), {
-      expires: 28,
-    })
+    if (setCookie) {
+      Cookies.set("user", JSON.stringify(user), {
+        expires: 28,
+      })
+    }
     setUser(user)
+    getMessages()
   }
 
   /**
@@ -64,11 +99,17 @@ export default function App() {
       }}
     >
       <BrowserRouter>
-        <Route path="*" render={() => <Navbar user={user} />} />
+        <Route
+          path="*"
+          render={() => <Navbar user={user} messages={messages} />}
+        />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
           <Route exact path="/blog" component={Posts} />
+          <Route exact path="/contact">
+            <Contact addMessageToState={addMessageToState} />
+          </Route>
           <PrivateRoute exact path="/posts/new">
             <NewPost />
           </PrivateRoute>
@@ -87,6 +128,12 @@ export default function App() {
           </PrivateRoute>
           <PrivateRoute exact path="/admin">
             <Admin />
+          </PrivateRoute>
+          <PrivateRoute exact path="/messages">
+            <Messages messages={messages} />
+          </PrivateRoute>
+          <PrivateRoute exact path="/messages/:subject">
+            <MessageView />
           </PrivateRoute>
         </Switch>
         <Route path="*" component={Footer} />

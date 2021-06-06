@@ -41,6 +41,44 @@ export default class Service {
     return fetch(url, options)
   }
 
+  static async getMessages(emailAddress, password) {
+    const response = await Service.request(`${apiURL}/messages`, "GET", null, {
+      emailAddress,
+      password,
+    })
+
+    if (response.status === 200) {
+      const messages = await response.json().then((data) => data)
+      return messages
+    } else if (response.status === 400) {
+      throw new Error("Bad Request")
+    } else if (response.status === 401) {
+      throw new Error("Not Authorized")
+    } else if (response.status === 500) {
+      throw new Error("Server Error")
+    }
+  }
+
+  static async addMessage(payload, emailAddress, password) {
+    const response = await Service.request(
+      `${apiURL}/messages`,
+      "POST",
+      payload,
+      { emailAddress, password }
+    )
+
+    if (response.status === 201) {
+      const message = await response.json()
+      return message
+    } else if (response.status === 401) {
+      throw new Error("Not Authorized")
+    } else if (response.status === 400) {
+      throw new Error("Bad Request")
+    } else if (response.status === 500) {
+      throw new Error("Server Error")
+    }
+  }
+
   /**
    * Send GET request with Authorization header to authenticate with server
    * @param {String} email
