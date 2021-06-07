@@ -68,7 +68,7 @@ export default function Home() {
             centered
             style={{ marginTop: "22px" }}
           >
-            {projects.map((project) => (
+            {projects.reverse().map((project) => (
               <Grid.Column tablet={8} computer={5}>
                 <ProjectLink
                   title={project.title}
