@@ -109,7 +109,7 @@ export default class Service {
   static async getProjects() {
     const response = await Service.request(`${apiURL}/projects`)
     if (response.status === 200) {
-      return response.json().then((data) => data)
+      return response.json().then((data) => data.reverse())
     } else if (response.status === 400) {
       throw new Error("Bad Request")
     } else if (response.status === 500) {
