@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import ReactMarkdown from "react-markdown"
 import { Button, Card, Image } from "semantic-ui-react"
-import Context from "./Provider"
+import Context from "../context/Provider"
 
 export default function PostLink({ post }) {
   return (

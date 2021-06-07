@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react"
 import { useHistory, Link } from "react-router-dom"
-import Content from "./Content"
-import Context from "./Provider"
+import Content from "../components/Content"
+import Context from "../context/Provider"
 import {
   Button,
   Container,
@@ -11,7 +11,7 @@ import {
   Header,
   Loader,
 } from "semantic-ui-react"
-import ProjectLink from "./ProjectLink"
+import ProjectLink from "../components/ProjectLink"
 
 export default function Home() {
   const [loading, setLoading] = useState(true)

@@ -1,6 +1,6 @@
 import React from "react"
 import ReactMarkdown from "react-markdown"
-import CodeBlock from "./CodeBlock"
+import CodeBlock from "../components/CodeBlock"
 import { Container, Header } from "semantic-ui-react"
 import input from "../about-text"
 

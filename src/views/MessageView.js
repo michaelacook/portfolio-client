@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { Header, Segment } from "semantic-ui-react"
-import Content from "./Content"
+import Content from "../components/Content"
 
 export default function MessageView() {
   const [name, setName] = useState("")

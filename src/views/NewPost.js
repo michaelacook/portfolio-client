@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext, useRef, Fragment } from "react"
 import { useHistory } from "react-router-dom"
 import { Button, Container, Header, Icon } from "semantic-ui-react"
-import Form from "./Form"
-import Context from "./Provider"
-import MarkDownCheatSheet from "./MarkDownCheatSheet"
+import Form from "../components/Form"
+import Context from "../context/Provider"
+import MarkDownCheatSheet from "../components/MarkDownCheatSheet"
 
 export default function NewPost(props) {
   const [title, setTitle] = useState("")

@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from "react"
 import { useParams, useHistory } from "react-router-dom"
 import { Button, Container, Dimmer, Header, Loader } from "semantic-ui-react"
 import Post from "./Post"
-import Context from "./Provider"
-import Tags from "./Tags"
+import Context from "../context/Provider"
+import Tags from "../components/Tags"
 
 export default function ViewPost() {
   const [title, setTitle] = useState("")

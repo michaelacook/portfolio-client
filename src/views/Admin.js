@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import Content from "./Content"
-import Context from "./Provider"
+import Content from "../components/Content"
+import Context from "../context/Provider"
 
 export default function Admin() {
   const { service, user } = useContext(Context)

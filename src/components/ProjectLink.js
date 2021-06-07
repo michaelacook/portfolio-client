@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { useHistory } from "react-router-dom"
 import ReactMarkdown from "react-markdown"
 import { Button, Card, Icon, Image } from "semantic-ui-react"
-import Context from "./Provider"
+import Context from "../context/Provider"
 
 export default function ProjectLink({
   id,

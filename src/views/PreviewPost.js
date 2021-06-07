@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react"
 import { useHistory } from "react-router-dom"
-import Content from "./Content"
+import Content from "../components/Content"
 import Post from "./Post"
-import Context from "./Provider"
-import Tags from "./Tags"
+import Context from "../context/Provider"
+import Tags from "../components/Tags"
 
 export default function PreviewPost(props) {
   const [title, setTitle] = useState("")

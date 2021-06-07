@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react"
 import { Link, useHistory, useParams } from "react-router-dom"
 import Post from "./Post"
-import Tags from "./Tags"
-import Content from "./Content"
-import Context from "./Provider"
+import Tags from "../components/Tags"
+import Content from "../components/Content"
+import Context from "../context/Provider"
 
 export default function Project() {
   const [project, setProject] = useState("")

@@ -9,8 +9,8 @@ import {
   Loader,
   Segment,
 } from "semantic-ui-react"
-import Context from "./Provider"
-import PostLink from "./PostLink"
+import Context from "../context/Provider"
+import PostLink from "../components/PostLink"
 
 export default () => {
   const [posts, setPosts] = useState([])

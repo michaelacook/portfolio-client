@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react"
-import Context from "./Provider"
-import Content from "./Content"
+import Context from "../context/Provider"
+import Content from "../components/Content"
 import { Button, Form, Grid, Header } from "semantic-ui-react"
 
 export default function Contact({ addMessageToState }) {

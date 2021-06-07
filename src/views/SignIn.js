@@ -1,9 +1,9 @@
 import React, { useContext, useState, Fragment } from "react"
 import { Button, Checkbox, Header, Grid, Input } from "semantic-ui-react"
 import { useHistory } from "react-router-dom"
-import Form from "./Form"
-import Content from "./Content"
-import Context from "./Provider"
+import Form from "../components/Form"
+import Content from "../components/Content"
+import Context from "../context/Provider"
 
 export default function SignIn() {
   const [email, setEmail] = useState("")
