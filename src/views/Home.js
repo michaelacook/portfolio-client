@@ -54,10 +54,14 @@ export default function Home() {
             Hey, I'm Michael🖖
           </Header>
           <p className="lead">
-            I'm a software developer and JavaScript enthusiast. My favourite
+            {/* I'm a software developer and JavaScript enthusiast. My favourite
             technologies are Node, Express, PostgreSQL, and React but I also
             dabble in PHP. This site is where I share the projects I'm most
-            proud of and write about technology.
+            proud of and write about technology. */}
+            I'm a full-stack JavaScript developer with a special interest in software architecture.
+            I use TypeScript, Express, Nest, Angular and React to build well-designed, scalable 
+            applications for the modern web. I am currently seeking my first professional role 
+            where I can put my skills to use and continue building my passion!
           </p>
           <Divider />
           <Grid
