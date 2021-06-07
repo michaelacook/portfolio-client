@@ -1,8 +1,7 @@
 import React, { useState, useContext } from "react"
 import Context from "./Provider"
 import Content from "./Content"
-import { Button, Form, Header } from "semantic-ui-react"
-import { socket } from "../socket"
+import { Button, Form, Grid, Header } from "semantic-ui-react"
 
 export default function Contact({ addMessageToState }) {
   const [subject, setSubject] = useState("")
@@ -35,7 +34,14 @@ export default function Contact({ addMessageToState }) {
 
   return (
     <Content>
-      <Header as="h1">Contact</Header>
+      <Header
+        as="h1"
+        style={{
+          marginTop: "22px",
+        }}
+      >
+        Contact
+      </Header>
       <p
         style={{
           marginBottom: "30px",
@@ -47,52 +53,74 @@ export default function Contact({ addMessageToState }) {
 
       {!sent ? (
         <Form>
-          <Form.Field width={13}>
-            <label>Name</label>
-            <input
-              placeholder="Name"
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value)
-              }}
-            />
-          </Form.Field>
+          <Grid stretched relaxed fluid stackable container={true}>
+            <Grid.Row>
+              <Grid.Column computer={13} mobile={16}>
+                <Form.Field>
+                  <label>Name</label>
+                  <input
+                    placeholder="Name"
+                    value={name}
+                    onChange={(e) => {
+                      setName(e.target.value)
+                    }}
+                  />
+                </Form.Field>
+              </Grid.Column>
+            </Grid.Row>
 
-          <Form.Field width={13} required>
-            <label>Subject</label>
-            <input
-              placeholder="Name"
-              value={subject}
-              onChange={(e) => {
-                setSubject(e.target.value)
-              }}
-            />
-          </Form.Field>
+            <Grid.Row>
+              <Grid.Column computer={13} mobile={16}>
+                <Form.Field required>
+                  <label>Subject</label>
+                  <input
+                    placeholder="Name"
+                    value={subject}
+                    onChange={(e) => {
+                      setSubject(e.target.value)
+                    }}
+                  />
+                </Form.Field>
+              </Grid.Column>
+            </Grid.Row>
 
-          <Form.Field width={13} required>
-            <label>Email</label>
-            <input
-              placeholder="Email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value)
-              }}
-            />
-          </Form.Field>
+            <Grid.Row>
+              <Grid.Column computer={13} mobile={16}>
+                <Form.Field required>
+                  <label>Email</label>
+                  <input
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value)
+                    }}
+                  />
+                </Form.Field>
+              </Grid.Column>
+            </Grid.Row>
 
-          <Form.Field width={15} required>
-            <label>Message</label>
-            <Form.TextArea
-              value={content}
-              onChange={(e) => {
-                setContent(e.target.value)
-              }}
-            ></Form.TextArea>
-          </Form.Field>
+            <Grid.Row>
+              <Grid.Column computer={13} mobile={16}>
+                <Form.Field required>
+                  <label>Message</label>
+                  <Form.TextArea
+                    value={content}
+                    onChange={(e) => {
+                      setContent(e.target.value)
+                    }}
+                  ></Form.TextArea>
+                </Form.Field>
+              </Grid.Column>
+            </Grid.Row>
 
-          <Form.Field>
-            <Button onClick={handleSend}>Send</Button>
-          </Form.Field>
+            <Grid.Row>
+              <Grid.Column computer={13} mobile={16}>
+                <Form.Field>
+                  <Button onClick={handleSend}>Send</Button>
+                </Form.Field>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
         </Form>
       ) : (
         <p>Thanks! Your message was sent</p>

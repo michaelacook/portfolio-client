@@ -9,7 +9,7 @@ export default function Content(props) {
       className="container content"
       style={{
         minHeight: "75vh",
-        padding: "40px",
+        // padding: "32px",
       }}
     >
       {props.children}
